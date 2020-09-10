@@ -217,15 +217,15 @@ export class ConcentrationTableComponent implements OnInit {
     // console.log(data);
 
 
-    // if (selectedMethod === this.methods.Metabolitics) {
-    //   this.metabolitics(data);
-    // }
-    // else if (selectedMethod === this.methods.DirectPathwayMapping) {
-    //   this.directPathwayMapping(data);
-    // }
-    // else if (selectedMethod === this.methods.MetaboliteEnrichment) {
-    //   this.metaboliteEnrichment(data);
-    // }
+    if (selectedMethod === this.methods.Metabolitics) {
+      this.metabolitics(data);
+    }
+    else if (selectedMethod === this.methods.DirectPathwayMapping) {
+      this.directPathwayMapping(data);
+    }
+    else if (selectedMethod === this.methods.MetaboliteEnrichment) {
+      this.metaboliteEnrichment(data);
+    }
   }
 
   prioritizeMetabolites(metaboliteList) {
