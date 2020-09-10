@@ -27,7 +27,7 @@
 
 FROM node:10.5 AS build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 
@@ -43,7 +43,7 @@ FROM nginx:1.15
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=build /usr/src/app/dist/metabol /usr/share/nginx/html
+COPY --from=build-prod app/dist/metabol /app
 
 EXPOSE 80
 
