@@ -35,7 +35,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+RUN npm run build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer
 
 ### STAGE 2: Run ###
 
