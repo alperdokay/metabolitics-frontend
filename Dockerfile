@@ -7,8 +7,18 @@ WORKDIR /app
 
 RUN npm install
 
-RUN $(npm bin)/ng build --prod
+## Checking node version and that it can be accessed irectly
+RUN node --version
 
+## ng Version check
+RUN $(npm bin)/ng --version
+
+##RUN npm rebuild node-sass --force
+
+## Build the angular app in production mode and store t he artifacts in dist folder
+##RUN node --max-old-space-size=8192 $(npm bin)/ng build --prod --aot --build-optimizer --no-progress
+##RUN REM call npm install -g @angular/cli
+RUN $(npm bin)/ng build --prod
 
 FROM nginx:1.15
 
