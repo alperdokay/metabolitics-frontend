@@ -22,14 +22,20 @@
 
 
 # Stage 1: Build an Angular Docker Image
-FROM node as build
-WORKDIR /app
-COPY package*.json /app/
-RUN npm cache clean --force
-RUN npm install
+FROM node:10.5 as build
+
 COPY . /app
+
+WORKDIR /app
+
+COPY package*.json /app/
+
+RUN npm install
+
 ARG configuration=production
+
 RUN npm run build -- --outputPath=./dist --configuration $configuration
+
 # Stage 2, use the compiled app, ready for production with Nginx
 FROM nginx:1.15
 
