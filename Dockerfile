@@ -7,9 +7,7 @@ WORKDIR /app
 
 RUN npm install
 
-RUN npm install -g @angular/cli@7.3.6
-
-RUN ng build --prod --output-path=./dist
+RUN npm run build --prod --output-path=./dist
 
 FROM nginx:1.15
 
