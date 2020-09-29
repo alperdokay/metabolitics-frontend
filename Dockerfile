@@ -8,7 +8,7 @@ WORKDIR /app
 
 RUN npm install
 
-RUN $(npm)/ng build --prod
+RUN npm run ng build --prod
 
 FROM nginx:1.15
 
