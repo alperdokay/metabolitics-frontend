@@ -21,26 +21,41 @@
 
 
 
-# Stage 1: Build an Angular Docker Image
-FROM node:10.5 as build
+## Stage 1: Build an Angular Docker Image
+#FROM node:10.5 as build
+#
+#COPY . /app
+#
+#WORKDIR /app
+#
+#COPY package*.json /app/
+#
+#RUN npm install
+#
+#RUN npm run build --prod --outputPath=./dist/metabol
+#
+## Stage 2, use the compiled app, ready for production with Nginx
+#FROM nginx:1.15
+#
+#COPY nginx.conf /etc/nginx/nginx.conf
+#
+#COPY --from=build app/dist/metabol /app
+#
+#EXPOSE 80
 
-COPY . /app
+FROM node:alpine AS builder
 
 WORKDIR /app
 
-COPY package*.json /app/
+COPY . .
 
-RUN npm install
+RUN npm install && \
+    npm run build
 
-ARG configuration=production
-
-RUN npm run build -- --outputPath=./dist --configuration $configuration
-
-# Stage 2, use the compiled app, ready for production with Nginx
-FROM nginx:1.15
+FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=build app/dist/metabol /app
+COPY --from=builder app/dist/metabol /app
 
 EXPOSE 80
