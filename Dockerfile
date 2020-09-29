@@ -36,7 +36,7 @@ RUN npm install
 COPY . .
 
 #RUN npm run build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer
-RUN $(npm bin)/ng build --prod --build-optimizer
+RUN $(npm bin)/ng build --prod --aot --vendor-chunk --common-chunk  --build-optimizer --output-path=./dist
 
 ### STAGE 2: Run ###
 
