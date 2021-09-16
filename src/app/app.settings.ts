@@ -1,7 +1,8 @@
 export class AppSettings {
   public static get API_ENDPOINT(): string {
     //return 'http://metabolitics.biodb.sehir.edu.tr/api';
-    return 'http://164.90.180.104/api'
+    // return 'http://164.90.180.104/api'
+    return '0.0.0.0:5000'
      // return 'http://127.0.0.1:5000';
   }
 
