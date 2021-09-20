@@ -6,8 +6,8 @@ WORKDIR /app
 
 RUN npm install
 
-#RUN npm run build --prod --output-path=./dist
-RUN npm run build
+RUN npm run build --prod --output-path=./dist
+# RUN npm run build
 
 FROM nginx:1.15
 
